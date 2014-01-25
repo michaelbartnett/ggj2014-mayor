@@ -17,7 +17,6 @@ public class OrientedBillboarder : MonoBehaviour
     void Update()
     {
         var camTransform = Camera.main.transform;
-        Debug.Log("ARGH", Camera.main);
         float camDot = Vector2.Dot(this.transform.forward.ToXZ(), camTransform.position.ToXZ() - this.transform.position.ToXZ());
         //if (camDot > 0 && FacingBackward) {
         if (camDot > 0) {

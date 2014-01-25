@@ -129,6 +129,7 @@ public class PartyGoer : MonoBehaviour
             dialogueItem = attitudesDialogue[attitudeIndex].GetDialogueItem();
         }
         Debug.Log("DIALOGUE: " + dialogueItem);
+        DialogueDisplay.Instance.ShowDialogue(this.name, dialogueItem);
     }
 
     private void GivePlayerGift(Player player)

@@ -38,8 +38,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (lookingAt != null && Input.GetKeyDown(KeyCode.E)) {
-            lookingAt.SendMessage("OnPlayerActivate", this);
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (DialogueDisplay.Instance.Visible) {
+                DialogueDisplay.Instance.HideDialogue();
+            } else if (lookingAt != null) {
+                lookingAt.SendMessage("OnPlayerActivate", this);
+            }
         }
 
         for (int i = 0; i < maskInventory.Count; i++) {

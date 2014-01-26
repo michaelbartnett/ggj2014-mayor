@@ -24,7 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiniGameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,8 +290,8 @@ MonoBehaviour:
   barEndXform: {fileID: 400016}
   leeway: 0
   slider: {fileID: 400006}
-  sliderSpeed: 12.5
-  increaseSpeedEachRoundBy: 3
+  sliderSpeed: 14
+  increaseSpeedEachRoundBy: 2
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

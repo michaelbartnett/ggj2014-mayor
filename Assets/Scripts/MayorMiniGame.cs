@@ -45,6 +45,7 @@ public class MayorMiniGame : MonoBehaviour
     {
         Running = true;
         DialogueDisplay.Instance.ShowDialogue("The Mayor", "Hello citizen!\n\n(Stab the mayor 3 times with <E>. You lose if you miss 3 times.)");
+        Audio.Instance.FadeOutBallroomMusic(3f);
         var tcfg = new GoTweenConfig()
             .localPosition(startLocalPos)
             .setEaseType(GoEaseType.BackOut);
@@ -57,6 +58,7 @@ public class MayorMiniGame : MonoBehaviour
         float t = Time.time;
         while (!Input.GetKeyDown(KeyCode.E)) yield return null;
         float dt = Math.Max(0, 1.25f - Time.time - t);
+        Audio.Instance.PlayBossMusic();
         yield return new WaitForSeconds(dt);
         DialogueDisplay.Instance.ChangeDialogue("The Mayor", "What is the meaning of this!?");
         if (MiniGameBegan != null) MiniGameBegan(this);
@@ -86,6 +88,7 @@ public class MayorMiniGame : MonoBehaviour
             yield return new WaitForSeconds(0.65f);
         }
         Player.Instance.EnableControls();
+        Audio.Instance.FadeOutBossMusic(3f);
     }
 
     private void DoSlide(float speedThisRound)

@@ -291,6 +291,7 @@ MonoBehaviour:
   leeway: 0
   slider: {fileID: 400006}
   sliderSpeed: 12.5
+  increaseSpeedEachRoundBy: 3
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

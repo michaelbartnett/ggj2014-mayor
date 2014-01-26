@@ -6,6 +6,7 @@ public class Mayor : MonoBehaviour
     public PartyGoer[] guards;
     public MessageForwarder guardTrigger;
     public float blockPlayerDistance = 0.5f;
+    public Animator mayorAnimator;
 
     private int pushingPlayer = 0;
 
@@ -22,6 +23,7 @@ public class Mayor : MonoBehaviour
 
     IEnumerator Start()
     {
+        MayorMiniGame.Instance.MiniGameFinished += OnMiniGameFinished;
         while (true) {
             var player = Player.Instance;
             if (player != null) {
@@ -40,6 +42,13 @@ public class Mayor : MonoBehaviour
                 }
             }
             yield return null;
+        }
+    }
+
+    void OnMiniGameFinished(MayorMiniGame _, bool playerWon)
+    {
+        if (playerWon) {
+            mayorAnimator.SetTrigger("MayorDeath");
         }
     }
 

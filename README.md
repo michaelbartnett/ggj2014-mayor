@@ -25,3 +25,6 @@ SFX needed:
 - Don't show "Looking At" gui text, somehow highlight the person you're looking at
 
 
+Public Domain Music:
+
+[String Quartet NO. 5 by William Henry Reed](http://imslp.org/wiki/String_Quartet_No.5_(Reed,_William_Henry,_%22Billy%22)#IMSLP311942)

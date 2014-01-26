@@ -12,8 +12,10 @@ public class MayorMiniGame : MonoBehaviour
 
     public Transform slider;
     public float sliderSpeed;
+    public float increaseSpeedEachRoundBy = 1f;
 
     public bool Running { get; private set; }
+    public bool SliderRunning { get { return sliderTween != null; } }
 
     public event Action<MayorMiniGame> MiniGameInitiated;
     public event Action<MayorMiniGame> MiniGameBegan;
@@ -23,6 +25,8 @@ public class MayorMiniGame : MonoBehaviour
 
     private GoTween sliderTween;
     private Vector3 startLocalPos;
+    private bool playerWonLastRound = false;
+
 
     void Awake()
     {
@@ -34,60 +38,92 @@ public class MayorMiniGame : MonoBehaviour
 
     public void BeginGame()
     {
-        DialogueDisplay.Instance.ShowDialogue("The Mayor", "What is the meaning of this!?");
+        StartCoroutine(RunMiniGame());
+    }
+
+    private IEnumerator RunMiniGame()
+    {
+        Running = true;
+        DialogueDisplay.Instance.ShowDialogue("The Mayor", "Hello citizen!\n\n(Stab the mayor 3 times with <E>. You lose if you miss 3 times.)");
         var tcfg = new GoTweenConfig()
             .localPosition(startLocalPos)
-            .setEaseType(GoEaseType.BackOut)
-            .onComplete(OnMiniGameEnterComplete);
-        Go.to(this.transform, 0.35f, tcfg);
+            .setEaseType(GoEaseType.BackOut);
+        yield return Go.to(this.transform, 0.35f, tcfg).waitForCompletion();
         if (MiniGameInitiated != null) MiniGameInitiated(this);
-            
+
+        float speed = sliderSpeed;
+        Player.Instance.DisableControls();
+
+        float t = Time.time;
+        while (!Input.GetKeyDown(KeyCode.E)) yield return null;
+        float dt = Math.Max(0, 1.25f - Time.time - t);
+        yield return new WaitForSeconds(dt);
+        DialogueDisplay.Instance.ChangeDialogue("The Mayor", "What is the meaning of this!?");
+        if (MiniGameBegan != null) MiniGameBegan(this);
+
+        int hitsToWIn = 3;
+        int missesToLose = 3;
+
+        while (true) {
+            DoSlide(speed);
+            speed += increaseSpeedEachRoundBy;
+            while (sliderTween != null) yield return null;
+            DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWonLastRound ? "OOF!" : "One does not simply stab\n ...\nTHE MAYOR!");
+            if (playerWonLastRound) {
+                hitsToWIn--;
+            } else {
+                missesToLose--;
+            }
+
+            if (hitsToWIn < 1) {
+                EndGame(true);
+                break;
+            } else if (missesToLose < 1) {
+                EndGame(false);
+                break;
+            }
+
+            yield return new WaitForSeconds(0.65f);
+        }
+        Player.Instance.EnableControls();
     }
 
-    private void OnMiniGameEnterComplete(AbstractGoTween _)
+    private void DoSlide(float speedThisRound)
     {
-        StartCoroutine(BeginGameForReal());
-    }
-
-    private IEnumerator BeginGameForReal()
-    {
-        yield return new WaitForSeconds(1.25f);
         var sliderStart = barBeginXform.position;
         var sliderEnd = barEndXform.position;
-        float slideDuration = Mathf.Abs(sliderEnd.x - sliderStart.x) / sliderSpeed;
+        float slideDuration = Mathf.Abs(sliderEnd.x - sliderStart.x) / speedThisRound;
         var tweenCfg = new GoTweenConfig()
             .position(sliderEnd)
-            .onComplete(OnSlideCompleted);
+            .onComplete(OnSliderReachedEnd);
         slider.position = sliderStart;
-
         sliderTween = Go.to(slider, slideDuration, tweenCfg);
-        Running = true;
-        if (MiniGameBegan != null) MiniGameBegan(this);
+    }
+
+    private void OnSliderReachedEnd(AbstractGoTween _)
+    {
+        sliderTween = null;
+        playerWonLastRound = false;
     }
 
     public void PlayerAttacks()
     {
         float sliderX = slider.position.x;
-
+        sliderTween.destroy();
+        sliderTween = null;
         if (sliderX > (successBeginXform.position.x - leeway) && sliderX < (successEndXform.position.x + leeway)) {
-            EndGame(true);
+            playerWonLastRound = true;
         } else {
-            EndGame(false);
+            playerWonLastRound = false;
         }
     }
 
     private void EndGame(bool playerWon)
     {
-        sliderTween.destroy();
-        sliderTween = null;
+        Running = false;
         Running = false;
         if (MiniGameFinished != null) MiniGameFinished(this, playerWon);
         Debug.LogWarning("MINIGAME OVER, PLAYER WON? " + playerWon);
         DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWon ? "*dies*" : "No one can stop me!");
-    }
-
-    private void OnSlideCompleted(AbstractGoTween _)
-    {
-        if (MiniGameFinished != null) EndGame(false);
     }
 }

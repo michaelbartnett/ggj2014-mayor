@@ -81,30 +81,29 @@ public class Player : MonoBehaviour
             lookingAt = hitInfo.collider.gameObject;
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) {
-            if (DialogueDisplay.Instance.Visible) {
-                DialogueDisplay.Instance.HideDialogue();
-            } else if (lookingAt != null) {
-                float distToTargetSqr = (this.transform.position.ToXZ() - lookingAt.transform.position.ToXZ()).sqrMagnitude;
-                if ((distToTargetSqr) <= (minActivateDistance * minActivateDistance)) {
-                    lookingAt.SendMessage("OnPlayerActivate", this);
-                } else {
-                    Debug.Log("Distance to target: " + Mathf.Sqrt(distToTargetSqr));
+        if (MayorMiniGame.Instance.Running) {
+            if (Input.GetKeyDown(KeyCode.E) && MayorMiniGame.Instance.SliderRunning) {
+                MayorMiniGame.Instance.PlayerAttacks();
+                KnifeScript.Instance.Attack();
+            }
+        } else {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                if (DialogueDisplay.Instance.Visible) {
+                    DialogueDisplay.Instance.HideDialogue();
+                } else if (lookingAt != null) {
+                    float distToTargetSqr = (this.transform.position.ToXZ() - lookingAt.transform.position.ToXZ()).sqrMagnitude;
+                    if ((distToTargetSqr) <= (minActivateDistance * minActivateDistance)) {
+                        lookingAt.SendMessage("OnPlayerActivate", this);
+                    } else {
+                        Debug.Log("Distance to target: " + Mathf.Sqrt(distToTargetSqr));
+                    }
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            wornMaskIndex = (wornMaskIndex + 1) % maskInventory.Count;
-            WornMask = maskInventory[wornMaskIndex];
-            MaskSelectorUI.Instance.SelectMask(WornMask);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F)) {
-            if (MayorMiniGame.Instance.Running) {
-                MayorMiniGame.Instance.PlayerAttacks();
+            if (Input.GetKeyDown(KeyCode.Q)) {
+                wornMaskIndex = (wornMaskIndex + 1) % maskInventory.Count;
+                WornMask = maskInventory[wornMaskIndex];
+                MaskSelectorUI.Instance.SelectMask(WornMask);
             }
-            KnifeScript.Instance.Attack();
         }
     }
 

@@ -15,6 +15,11 @@ public class Audio : MonoBehaviour
         Instance = this;
     }
 
+    void OnDestroy()
+    {
+        Instance = null;
+    }
+
     void Start()
     {
         PlayBallromMusic();

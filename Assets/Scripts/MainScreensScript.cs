@@ -1,34 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum GameState { Title, Game, Win, Lose };
+
 public class MainScreensScript : MonoBehaviour {
-	enum GameState {Title, Game, Win, Lose};
-	GameState gameState = GameState.Title;
+	private GameState gameState = GameState.Title;
 
 	public Texture2D winScreen;
 	public Texture2D loseScreen;
 	public Texture2D titleScreen;
 
+    public static MainScreensScript Instance { get; private set; }
+
 	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Awake () {
+        Instance = this;
 	}
 
-	void SetGameState(int x){
-		if(x == 0){
-			GameState gameState = GameState.Title;
-		} else if(x == 1){
-			GameState gameState = GameState.Game;
-		} else if(x == 2){
-			GameState gameState = GameState.Win;
-		} else if(x == 3){
-			GameState gameState = GameState.Lose;
-		}
+    void OnDestroy()
+    {
+        Instance = null;
+    }
+	
+    public void SetGameState(GameState state)
+    {
+        this.gameState = state;
+        //int x = (int)state;
+        //if(x == 0){
+        //    GameState gameState = GameState.Title;
+        //} else if(x == 1){
+        //    GameState gameState = GameState.Game;
+        //} else if(x == 2){
+        //    GameState gameState = GameState.Win;
+        //} else if(x == 3){
+        //    GameState gameState = GameState.Lose;
+        //}
 	}
 
 	void OnGUI(){

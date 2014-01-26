@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     public bool ControlsEnabled { get; private set; }
 
+    private bool gameStarted = false;
+
     void Awake()
     {
         DisableControls();
@@ -27,9 +29,20 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    void OnDestroy()
     {
+        Instance = null;
+    }
+
+    IEnumerator Start()
+    {
+        gameStarted = false;
         MayorMiniGame.Instance.MiniGameInitiated += OnMiniGameInitiated;
+        MainScreensScript.Instance.SetGameState(GameState.Title);
+        while (!Input.GetKeyDown(KeyCode.E)) yield return null;
+        MainScreensScript.Instance.SetGameState(GameState.Game);
+        Debug.LogError("ARGH");
+        gameStarted = true;
         EnableControls();
     }
 
@@ -74,6 +87,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!gameStarted) return;
         lookingAt = null;
         var mouseHitRay = fpCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hitInfo;

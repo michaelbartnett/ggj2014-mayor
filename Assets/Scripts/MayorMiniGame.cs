@@ -36,6 +36,11 @@ public class MayorMiniGame : MonoBehaviour
         this.transform.localPosition -= Vector3.right * 15f;
     }
 
+    void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public void BeginGame()
     {
         StartCoroutine(RunMiniGame());
@@ -87,7 +92,6 @@ public class MayorMiniGame : MonoBehaviour
 
             yield return new WaitForSeconds(0.65f);
         }
-        Player.Instance.EnableControls();
         Audio.Instance.FadeOutBossMusic(3f);
     }
 
@@ -127,6 +131,17 @@ public class MayorMiniGame : MonoBehaviour
         Running = false;
         if (MiniGameFinished != null) MiniGameFinished(this, playerWon);
         Debug.LogWarning("MINIGAME OVER, PLAYER WON? " + playerWon);
+        StartCoroutine(EndScreen(playerWon));
+    }
+
+    IEnumerator EndScreen(bool playerWon)
+    {
         DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWon ? "*dies*" : "No one can stop me!");
+        yield return new WaitForSeconds(1.0f);
+        DialogueDisplay.Instance.HideDialogue();
+        MainScreensScript.Instance.SetGameState(playerWon ? GameState.Win : GameState.Lose);
+        float initTime = Time.time;
+        while (!(Time.time - initTime > 10f || ((Time.time - initTime > 1) && Input.GetKeyDown(KeyCode.E)))) yield return null;
+        Application.LoadLevel(0);
     }
 }

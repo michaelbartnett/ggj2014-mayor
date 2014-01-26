@@ -502,6 +502,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 230750418}
   - 20: {fileID: 230750419}
+  - 114: {fileID: 230750420}
   m_Layer: 0
   m_Name: GUICamera
   m_TagString: Untagged
@@ -552,6 +553,20 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
+--- !u!114 &230750420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230750417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294c1c1e39eda434b898e4fc32dbd42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScreen: {fileID: 2800000, guid: a6d6af15ed3f4f4439a44d50f6b2ff0b, type: 3}
+  loseScreen: {fileID: 2800000, guid: e2b7814b8e4ccb64b9e93cf404f76409, type: 3}
+  titleScreen: {fileID: 2800000, guid: 2fc5b473dc0d4fe489c1a870bdd086c2, type: 3}
 --- !u!1 &377503743
 GameObject:
   m_ObjectHideFlags: 0

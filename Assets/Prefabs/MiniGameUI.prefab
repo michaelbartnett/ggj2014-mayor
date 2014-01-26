@@ -290,7 +290,7 @@ MonoBehaviour:
   barEndXform: {fileID: 400016}
   leeway: 0
   slider: {fileID: 400006}
-  sliderSpeed: 12
+  sliderSpeed: 12.5
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

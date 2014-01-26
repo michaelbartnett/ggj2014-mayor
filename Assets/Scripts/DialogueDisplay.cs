@@ -23,6 +23,16 @@ public class DialogueDisplay : MonoBehaviour
         Instance = this;
     }
 
+    public void ChangeDialogue(string speaker, string dialogue)
+    {
+        if (!Visible) {
+            ShowDialogue(speaker, dialogue);
+        } else {
+            speakerNameTextMesh.text = "<i>" + speaker + "</i>:";
+            dialogueTextMesh.text = dialogue;
+        }
+    }
+
     public void ShowDialogue(string speaker, string dialogue)
     {
         if (transitioning || Visible) return;

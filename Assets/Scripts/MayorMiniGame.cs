@@ -15,21 +15,43 @@ public class MayorMiniGame : MonoBehaviour
 
     public bool Running { get; private set; }
 
+    public event Action<MayorMiniGame> MiniGameInitiated;
     public event Action<MayorMiniGame> MiniGameBegan;
     public event Action<MayorMiniGame, bool> MiniGameFinished;
 
     public static MayorMiniGame Instance { get; private set; }
 
     private GoTween sliderTween;
+    private Vector3 startLocalPos;
 
     void Awake()
     {
         Running = false;
         Instance = this;
+        startLocalPos = this.transform.localPosition;
+        this.transform.localPosition -= Vector3.right * 15f;
     }
 
     public void BeginGame()
     {
+        DialogueDisplay.Instance.ShowDialogue("The Mayor", "What is the meaning of this!?");
+        var tcfg = new GoTweenConfig()
+            .localPosition(startLocalPos)
+            .setEaseType(GoEaseType.BackOut)
+            .onComplete(OnMiniGameEnterComplete);
+        Go.to(this.transform, 0.35f, tcfg);
+        if (MiniGameInitiated != null) MiniGameInitiated(this);
+            
+    }
+
+    private void OnMiniGameEnterComplete(AbstractGoTween _)
+    {
+        StartCoroutine(BeginGameForReal());
+    }
+
+    private IEnumerator BeginGameForReal()
+    {
+        yield return new WaitForSeconds(1.25f);
         var sliderStart = barBeginXform.position;
         var sliderEnd = barEndXform.position;
         float slideDuration = Mathf.Abs(sliderEnd.x - sliderStart.x) / sliderSpeed;
@@ -61,6 +83,7 @@ public class MayorMiniGame : MonoBehaviour
         Running = false;
         if (MiniGameFinished != null) MiniGameFinished(this, playerWon);
         Debug.LogWarning("MINIGAME OVER, PLAYER WON? " + playerWon);
+        DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWon ? "*dies*" : "No one can stop me!");
     }
 
     private void OnSlideCompleted(AbstractGoTween _)

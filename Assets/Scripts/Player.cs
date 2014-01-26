@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     public Camera fpCamera;
+    public float minActivateDistance = 2f;
     private GameObject lookingAt;
     private List<string> maskInventory = new List<string>();
     public string WornMask { get; private set; }
@@ -19,13 +20,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        MayorMiniGame.Instance.MiniGameBegan += OnMiniGameBegan;
+        MayorMiniGame.Instance.MiniGameInitiated += OnMiniGameInitiated;
     }
 
-    private void OnMiniGameBegan(MayorMiniGame _)
+    private void OnMiniGameInitiated(MayorMiniGame _)
     {
-        _.MiniGameBegan -= OnMiniGameBegan;
-        // hold up your knife
+        _.MiniGameInitiated -= OnMiniGameInitiated;
+        KnifeScript.Instance.Raise();
     }
 
     public void GiveMask(string maskName, Sprite maskSprite)
@@ -54,7 +55,12 @@ public class Player : MonoBehaviour
             if (DialogueDisplay.Instance.Visible) {
                 DialogueDisplay.Instance.HideDialogue();
             } else if (lookingAt != null) {
-                lookingAt.SendMessage("OnPlayerActivate", this);
+                float distToTargetSqr = (this.transform.position.ToXZ() - lookingAt.transform.position.ToXZ()).sqrMagnitude;
+                if ((distToTargetSqr) <= (minActivateDistance * minActivateDistance)) {
+                    lookingAt.SendMessage("OnPlayerActivate", this);
+                } else {
+                    Debug.Log("Distance to target: " + Mathf.Sqrt(distToTargetSqr));
+                }
             }
         }
 
@@ -64,8 +70,11 @@ public class Player : MonoBehaviour
             MaskSelectorUI.Instance.SelectMask(WornMask);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && MayorMiniGame.Instance.Running) {
-            MayorMiniGame.Instance.PlayerAttacks();
+        if (Input.GetKeyDown(KeyCode.F)) {
+            if (MayorMiniGame.Instance.Running) {
+                MayorMiniGame.Instance.PlayerAttacks();
+            }
+            KnifeScript.Instance.Attack();
         }
     }
 

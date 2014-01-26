@@ -13,12 +13,12 @@ Happy - Wow after a few drinks I feel liberated! I think this is a perfect night
 
 Jack:
 Ignore - Sorry sweet cheeks you aren't quite what I am looking for.
-Nuetral - Well sugar, if you could dress a little more regal we may be making progress.
+Neutral - Well sugar, if you could dress a little more regal we may be making progress.
 Happy - Hey Hot Stuff! If you have some time after the party you know where to find me.
 
 Jill:
 Ignore - While you are quite attractive it seems you have nothing I desire for now.
-Nuetral - If you could, please get Jerry off my back and possibly slip into something a little more revealing.
+Neutral - If you could, please get Jerry off my back and possibly slip into something a little more revealing.
 Happy - Hey gorgeous, here is my number. Give me a ring after this shindig for a night to remember.
 
 Jane:
@@ -29,7 +29,7 @@ Happy - You may be of some use to me after all.
 
 Joe:
 Ignore - Hey Kiddo. Got nothing to offer you but drinks at the moment.
-Nuetral - So what will you have? Oh something for the lady in blue. No problem.
+Neutral - So what will you have? Oh something for the lady in blue. No problem.
 Happy - Here kiddo, have some of Joe's special stock. On the house.
 
 George the Guard:
@@ -44,3 +44,5 @@ Happy - Eh! I heard about ya, the Mayor is excited to talk to ya.
 
 Mayor:
 End - Wait you're not my pusher! Guards!
+Win - I shoulda crushed you like a cockroach.
+Lose - That's what you get when you mess with the Candy!

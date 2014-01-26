@@ -4,7 +4,6 @@ using System;
 
 public class DialogueDisplay : MonoBehaviour
 {
-    public Transform dialogueRoot;
     public TextMesh speakerNameTextMesh;
     public TextMesh dialogueTextMesh;
     public Vector3 hiddenLocalPosition;
@@ -12,11 +11,13 @@ public class DialogueDisplay : MonoBehaviour
 
     public bool Visible { get; private set; }
     private bool transitioning = false;
+    private Transform dialogueRoot;
 
     public static DialogueDisplay Instance { get; private set; }
 
     void Awake()
     {
+        dialogueRoot = this.transform;
         Visible = false;
         dialogueRoot.localPosition = hiddenLocalPosition;
         Instance = this;

@@ -74,11 +74,11 @@ MonoBehaviour:
     gives: []
   - name: Make Happy
     needs:
-    - needType: 3
+    - needType: 1
       needParams:
         person: {fileID: 0}
         mask: 
-        count: 2
+        count: 0
     gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue

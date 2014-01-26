@@ -34,7 +34,7 @@ public class Mayor : MonoBehaviour
                         PushPlayerBackRepositionGuards(player);
                         player.DisableControls();
                         while (pushingPlayer > 0) yield return null;
-                        if (Mathf.Random(0, 1) == 0) {
+                        if (Random.Range(0, 1) == 0) {
                             DialogueDisplay.Instance.ChangeDialogue("George the Guard", "WHAT! HAVE A PROBLEM!");
                             DialogueDisplay.Instance.ChangeDialogue("Giovanni the Guard", "What are ya lookin at!");
                         } else {

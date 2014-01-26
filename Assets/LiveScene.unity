@@ -678,13 +678,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask1
+        count: 0
     gives: []
   - name: Make Happy
-    needs: []
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 785572542}
+        mask: 
+        count: 0
     gives:
-    - mask: Mask2
-      maskSprite: {fileID: 21300000, guid: a12745a0cc627724c981e8430d235e55, type: 3}
+    - mask: Mask3
+      maskSprite: {fileID: 0}
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
@@ -754,6 +764,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -4.37113883e-08
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a3578477a5dfa0d41a7fa690e10cc8a7, type: 2}
+      propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 246945669}
+    - target: {fileID: 13600000, guid: a3578477a5dfa0d41a7fa690e10cc8a7, type: 2}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3578477a5dfa0d41a7fa690e10cc8a7, type: 2}
   m_RootGameObject: {fileID: 785572539}
@@ -808,7 +826,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: deafc9401fdcb5942bea4f772b954db6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3517968a57506d04b9ab3bee1c5348b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &377503743
 GameObject:
@@ -1430,10 +1448,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 246945669}
+        mask: 
+        count: 0
     gives: []
   - name: Make Happy
-    needs: []
+    needs:
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask2
+        count: 0
     gives:
     - mask: Mask2
       maskSprite: {fileID: 21300000, guid: a12745a0cc627724c981e8430d235e55, type: 3}
@@ -1457,7 +1485,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .589999974
+  m_Radius: 3
   m_Height: 2.32999992
   m_Direction: 1
   m_Center: {x: 0, y: 1.17999995, z: 0}
@@ -2392,7 +2420,11 @@ Prefab:
     - target: {fileID: 11400000, guid: bc3ee8472da14244c85710a9156ab814, type: 2}
       propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
       value: 
-      objectReference: {fileID: 1364385529}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bc3ee8472da14244c85710a9156ab814, type: 2}
+      propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 785572542}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc3ee8472da14244c85710a9156ab814, type: 2}
   m_RootGameObject: {fileID: 1309690453}
@@ -2716,18 +2748,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 785572542}
+        mask: 
+        count: 0
     gives: []
   - name: Make Happy
     needs:
-    - needType: 1
+    - needType: 2
       needParams:
-        person: {fileID: 1364385529}
-        mask: 
+        person: {fileID: 0}
+        mask: Mask3
         count: 0
-    gives:
-    - mask: Mask1
-      maskSprite: {fileID: 21300000, guid: ef0d6776ba6df8a4e883d7836fe12563, type: 3}
+    gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
@@ -2877,13 +2912,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 1
+      needParams:
+        person: {fileID: 1309690454}
+        mask: 
+        count: 0
     gives: []
   - name: Make Happy
     needs:
     - needType: 0
       needParams:
-        person: {fileID: 1365690513}
+        person: {fileID: 1725484575}
         mask: 
         count: 0
     gives: []
@@ -3008,18 +3048,18 @@ MonoBehaviour:
   attitudesMetadata:
   - name: Make Ambivalent
     needs:
-    - needType: 0
-      needParams:
-        person: {fileID: 1364385529}
-        mask: 
-        count: 0
-    gives: []
-  - name: Make Happy
-    needs:
     - needType: 2
       needParams:
         person: {fileID: 0}
         mask: Mask1
+        count: 0
+    gives: []
+  - name: Make Happy
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 1309690454}
+        mask: 
         count: 0
     gives:
     - mask: Mask2
@@ -3307,11 +3347,11 @@ MonoBehaviour:
     gives: []
   - name: Make Happy
     needs:
-    - needType: 3
+    - needType: 1
       needParams:
-        person: {fileID: 0}
+        person: {fileID: 1725484575}
         mask: 
-        count: 2
+        count: 0
     gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue
@@ -3440,6 +3480,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -4.37113883e-08
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.mask
+      value: Mask1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 785572542}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
   m_RootGameObject: {fileID: 246945666}
@@ -3818,6 +3866,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 3d308038526aca7448bbed5520bcc761, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 1725484575}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d308038526aca7448bbed5520bcc761, type: 2}
   m_RootGameObject: {fileID: 1434649194}
@@ -3861,7 +3913,11 @@ Prefab:
     - target: {fileID: 11400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
       propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
       value: 
-      objectReference: {fileID: 1365690513}
+      objectReference: {fileID: 1725484575}
+    - target: {fileID: 11400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
+      propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 1309690454}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
   m_RootGameObject: {fileID: 1364385528}
@@ -3902,6 +3958,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .923879564
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f64566d87f35b5f428eddc9ecf32cb34, type: 2}
+      propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 785572542}
+    - target: {fileID: 11400002, guid: f64566d87f35b5f428eddc9ecf32cb34, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 1364385529}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f64566d87f35b5f428eddc9ecf32cb34, type: 2}
   m_RootGameObject: {fileID: 1725484572}
@@ -3969,11 +4033,11 @@ MonoBehaviour:
     gives: []
   - name: Make Happy
     needs:
-    - needType: 3
+    - needType: 1
       needParams:
-        person: {fileID: 0}
+        person: {fileID: 1725484575}
         mask: 
-        count: 2
+        count: 0
     gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue
@@ -4104,10 +4168,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 1
+      needParams:
+        person: {fileID: 785572542}
+        mask: 
+        count: 0
     gives: []
   - name: Make Happy
-    needs: []
+    needs:
+    - needType: 1
+      needParams:
+        person: {fileID: 1364385529}
+        mask: 
+        count: 0
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask1
+        count: 0
     gives:
     - mask: Mask2
       maskSprite: {fileID: 21300000, guid: a12745a0cc627724c981e8430d235e55, type: 3}
@@ -4252,6 +4331,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e087949963d23b343805726a32b8fa15, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 1725484575}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e087949963d23b343805726a32b8fa15, type: 2}
   m_RootGameObject: {fileID: 1660399817}
@@ -4616,7 +4699,11 @@ Prefab:
     - target: {fileID: 11400000, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
       value: 
-      objectReference: {fileID: 1364385529}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 1309690454}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
   m_RootGameObject: {fileID: 1365690510}

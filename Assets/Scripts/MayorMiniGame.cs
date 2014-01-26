@@ -16,6 +16,9 @@ public class MayorMiniGame : MonoBehaviour
     public bool Running { get; private set; }
 
     public event Action<MayorMiniGame, bool> MiniGameFinished;
+
+    public static MayorMiniGame Instance { get; private set; }
+
     private GoTween sliderTween;
 
     IEnumerator Start()
@@ -39,6 +42,7 @@ public class MayorMiniGame : MonoBehaviour
     void Awake()
     {
         Running = false;
+        Instance = this;
     }
 
     public void BeginGame()

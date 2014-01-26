@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+        }
     }
 
     private void WearMask(int maskIndex)

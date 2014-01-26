@@ -5,15 +5,27 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     public Camera fpCamera;
-    private PartyGoer lookingAt;
+    private GameObject lookingAt;
     private List<string> maskInventory = new List<string>();
     public string WornMask { get; private set; }
     private int wornMaskIndex = 0;
+
 
     void Awake()
     {
         WornMask = string.Empty;
         maskInventory.Add(WornMask);
+    }
+
+    void Start()
+    {
+        MayorMiniGame.Instance.MiniGameBegan += OnMiniGameBegan;
+    }
+
+    private void OnMiniGameBegan(MayorMiniGame _)
+    {
+        _.MiniGameBegan -= OnMiniGameBegan;
+        // hold up your knife
     }
 
     public void GiveMask(string maskName, Sprite maskSprite)
@@ -34,11 +46,8 @@ public class Player : MonoBehaviour
         lookingAt = null;
         var mouseHitRay = fpCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hitInfo;
-        if (Physics.Raycast(mouseHitRay, out hitInfo, float.MaxValue)) {
-            var partyGoer = hitInfo.collider.GetComponent<PartyGoer>();
-            if (partyGoer != null) {
-                lookingAt = partyGoer;
-            }
+        if (Physics.Raycast(mouseHitRay, out hitInfo, float.MaxValue, 1 << LayerMask.NameToLayer("PlayerActivatable"))) {
+            lookingAt = hitInfo.collider.gameObject;
         }
 
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -55,7 +64,8 @@ public class Player : MonoBehaviour
             MaskSelectorUI.Instance.SelectMask(WornMask);
         }
 
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.F) && MayorMiniGame.Instance.Running) {
+            MayorMiniGame.Instance.PlayerAttacks();
         }
     }
 

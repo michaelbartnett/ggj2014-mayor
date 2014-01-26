@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Mayor : MonoBehaviour {
+public class Mayor : MonoBehaviour
+{
+    public PartyGoer[] guards;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void OnPlayerActivate(Player player)
+    {
+        MayorMiniGame.Instance.BeginGame();
+    }
 }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public FPSInputController inputController;
     public MouseLook mouseLookX;
     public MouseLook mouseLookY;
+    public CharacterMotor motor;
     public float minActivateDistance = 2f;
     private GameObject lookingAt;
     private List<string> maskInventory = new List<string>();
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         inputController.enabled = false;
         mouseLookX.enabled = false;
         mouseLookY.enabled = false;
+        motor.inputMoveDirection = Vector3.zero;
 
         ControlsEnabled = false;
     }

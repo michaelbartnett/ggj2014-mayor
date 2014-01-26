@@ -32,10 +32,10 @@ public class Mayor : MonoBehaviour
                         PushPlayerBackRepositionGuards(player);
                         player.DisableControls();
                         while (pushingPlayer > 0) yield return null;
-                        Player.Instance.EnableControls();
                         DialogueDisplay.Instance.ChangeDialogue("Guards", "You must not speak to the Mayor.");
                         while (!Input.GetKeyDown(KeyCode.E)) yield return null;
                         DialogueDisplay.Instance.HideDialogue();
+                        Player.Instance.EnableControls();
                     }
                 }
             }

@@ -178,6 +178,7 @@ MonoBehaviour:
   inputController: {fileID: 11400002}
   mouseLookX: {fileID: 11400006}
   mouseLookY: {fileID: 11400008}
+  motor: {fileID: 11400004}
   minActivateDistance: 2
 --- !u!114 &11400002
 MonoBehaviour:

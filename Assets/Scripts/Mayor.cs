@@ -32,6 +32,7 @@ public class Mayor : MonoBehaviour
                         PushPlayerBackRepositionGuards(player);
                         player.DisableControls();
                         while (pushingPlayer > 0) yield return null;
+                        Player.Instance.EnableControls();
                         DialogueDisplay.Instance.ChangeDialogue("Guards", "You must not speak to the Mayor.");
                         while (!Input.GetKeyDown(KeyCode.E)) yield return null;
                         DialogueDisplay.Instance.HideDialogue();
@@ -61,7 +62,11 @@ public class Mayor : MonoBehaviour
             alternatingSign *= -1f;
         }
 
-        player.transform.positionTo(0.65f, player.transform.position + pushVector).setOnCompleteHandler(OnPushPlayerTweenActionComplete);
+        var playerTweenConfig = new GoTweenConfig()
+            .position(player.transform.position + pushVector)
+            .vector3Prop("forward", -newGuardForward)
+            .onComplete(OnPushPlayerTweenActionComplete);
+        Go.to(player.transform, 0.65f, playerTweenConfig);
     }
 
     private void OnPushPlayerTweenActionComplete(AbstractGoTween _)
@@ -72,9 +77,7 @@ public class Mayor : MonoBehaviour
             foreach (var guard in guards) {
                 guard.collider.enabled = true;
             }
-            Player.Instance.EnableControls();
         }
-
     }
 
     private bool CheckWithGuards()

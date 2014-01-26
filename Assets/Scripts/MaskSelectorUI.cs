@@ -5,22 +5,26 @@ using System.Collections.Generic;
 public class MaskSelectorUI : MonoBehaviour
 {
     public MaskUIElement maskUIElementPrefab;
-    public Vector3 firstPosition;
+    public Transform firstPositionLocator;
     public Vector3 subsequentOffsets;
 
     private Dictionary<string, MaskUIElement> uiMasks = new Dictionary<string, MaskUIElement>();
     private Vector3 lastOffset;
     private MaskUIElement selectedMask = null;
 
+    public static MaskSelectorUI Instance { get; private set; }
+
     void Awake()
     {
-        lastOffset = firstPosition - subsequentOffsets;
+        lastOffset = firstPositionLocator.position - subsequentOffsets;
+        Instance = this;
     }
 
     public void AddMask(string maskName, Sprite maskSprite)
     {
         lastOffset += subsequentOffsets;
         var elementInstance = Instantiate(maskUIElementPrefab, lastOffset, Quaternion.identity) as MaskUIElement;
+        elementInstance.spriteRenderer.sprite = maskSprite;
         uiMasks.Add(maskName, elementInstance);
     }
 

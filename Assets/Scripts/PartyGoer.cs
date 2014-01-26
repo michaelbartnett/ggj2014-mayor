@@ -61,6 +61,7 @@ public class PartyGoerNeed
 public class PartyGoerGift
 {
     public string mask;
+    public Sprite maskSprite;
 }
 
 [Serializable]
@@ -151,7 +152,7 @@ public class PartyGoer : MonoBehaviour
         var givenGifts = new List<string>();
         foreach (var gift in attitudeMeta.gives) {
             if (!string.IsNullOrEmpty(gift.mask)) {
-                player.maskInventory.Add(gift.mask);
+                player.GiveMask(gift.mask, gift.maskSprite);
                 givenGifts.Add(gift.mask);
             }
         }

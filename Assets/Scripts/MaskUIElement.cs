@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MaskUIElement : MonoBehaviour
 {
-    private const float deactivatedAlpha = 0.5f;
+    private const float deactivatedAlpha = 0.35f;
     public SpriteRenderer spriteRenderer;
 
     public bool Activated { get; private set; }

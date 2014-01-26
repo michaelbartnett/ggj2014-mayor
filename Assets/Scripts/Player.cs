@@ -6,18 +6,21 @@ public class Player : MonoBehaviour
 {
     public Camera fpCamera;
     private PartyGoer lookingAt;
-    public List<string> maskInventory;
+    private List<string> maskInventory = new List<string>();
     public string WornMask { get; private set; }
+    private int wornMaskIndex = 0;
 
     void Awake()
     {
         WornMask = string.Empty;
+        maskInventory.Add(WornMask);
     }
 
-    public void GiveMask(string mask)
+    public void GiveMask(string maskName, Sprite maskSprite)
     {
-        if (!maskInventory.Contains(mask)) {
-            maskInventory.Add(mask);
+        if (!maskInventory.Contains(maskName)) {
+            maskInventory.Add(maskName);
+            MaskSelectorUI.Instance.AddMask(maskName, maskSprite);
         }
     }
 
@@ -46,27 +49,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < maskInventory.Count; i++) {
-            string keyAsString = (i + 1).ToString();
-            if (Input.GetKeyDown(keyAsString)) {
-                if (maskInventory.Count < 1) {
-                    Debug.Log("You have no masks");
-                } else {
-                    WearMask(i);
-                    break;
-                }
-            }
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            wornMaskIndex = (wornMaskIndex + 1) % maskInventory.Count;
+            WornMask = maskInventory[wornMaskIndex];
+            MaskSelectorUI.Instance.SelectMask(WornMask);
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-        }
-    }
-
-    private void WearMask(int maskIndex)
-    {
-        if (maskIndex >= 0 && maskIndex < maskInventory.Count) {
-            WornMask = maskInventory[maskIndex];
-            Debug.Log("You are not wearing " + WornMask);
         }
     }
 

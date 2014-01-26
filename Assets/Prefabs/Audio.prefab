@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200002}
   - 82: {fileID: 8200000}
+  - 82: {fileID: 8200004}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -145,6 +146,64 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &8200004
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: .67900002
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballroomMusicSrc: {fileID: 8200002}
   bossMusicSrc: {fileID: 8200000}
-  bossHitSFX: {fileID: 0}
+  hitSFX: {fileID: 8200004}
+  knifeHitSound: {fileID: 8300000, guid: b5c2fe846988edf489df1bf992d46de8, type: 3}
+  knifeMissSound: {fileID: 8300000, guid: 8d96bea913271284daa94f3f6218399e, type: 3}
+  mayorDeathSound: {fileID: 8300000, guid: 46d96673c4406d745ac2e946d408fd27, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

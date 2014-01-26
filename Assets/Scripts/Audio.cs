@@ -6,7 +6,16 @@ public class Audio : MonoBehaviour
 {
     [SerializeField] private AudioSource ballroomMusicSrc;
     [SerializeField] private AudioSource bossMusicSrc;
-    [SerializeField] private AudioSource bossHitSFX;
+    [SerializeField] private AudioSource hitSFX;
+    
+    [SerializeField]
+    private AudioClip knifeHitSound;
+
+    [SerializeField]
+    private AudioClip knifeMissSound;
+
+    [SerializeField]
+    private AudioClip mayorDeathSound;
 
     public static Audio Instance { get; private set; }
 
@@ -25,17 +34,9 @@ public class Audio : MonoBehaviour
         PlayBallromMusic();
     }
 
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.N))
-        //    PlayBallromMusic();
-        //if (Input.GetKeyDown(KeyCode.M))
-        //    FadeOutBallroomMusic(1f);
-    }
-
     public void PlayBallromMusic()
     {
-        //ballroomMusicSrc.volume = 1f;
+        ballroomMusicSrc.volume = 1f;
         ballroomMusicSrc.Play();
     }
 
@@ -49,13 +50,24 @@ public class Audio : MonoBehaviour
         bossMusicSrc.Play();
     }
 
+    public void PlayKnifeHit()
+    {
+        hitSFX.PlayOneShot(knifeHitSound);
+    }
+
+    public void PlayKnifeMiss()
+    {
+        hitSFX.PlayOneShot(knifeMissSound);
+    }
+
+    public void PlayMayorDeath()
+    {
+        hitSFX.PlayOneShot(mayorDeathSound);
+    }
+
     public void FadeOutBossMusic(float time)
     {
         FadeOutAudio(bossMusicSrc, time);
-    }
-
-    public void PlayBossHitSFX()
-    {
     }
 
     private IEnumerator FadeOutAudio(AudioSource src, float time)

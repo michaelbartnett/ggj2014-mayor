@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         MainScreensScript.Instance.SetGameState(GameState.Title);
         while (!Input.GetKeyDown(KeyCode.E)) yield return null;
         MainScreensScript.Instance.SetGameState(GameState.Game);
-        Debug.LogError("ARGH");
         gameStarted = true;
         EnableControls();
     }

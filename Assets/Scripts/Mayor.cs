@@ -49,6 +49,7 @@ public class Mayor : MonoBehaviour
     {
         if (playerWon) {
             mayorAnimator.SetTrigger("MayorDeath");
+            Audio.Instance.PlayMayorDeath();
         }
     }
 

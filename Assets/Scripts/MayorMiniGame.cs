@@ -120,8 +120,10 @@ public class MayorMiniGame : MonoBehaviour
         sliderTween = null;
         if (sliderX > (successBeginXform.position.x - leeway) && sliderX < (successEndXform.position.x + leeway)) {
             playerWonLastRound = true;
+            Audio.Instance.PlayKnifeHit();
         } else {
             playerWonLastRound = false;
+            Audio.Instance.PlayKnifeMiss();
         }
     }
 

@@ -96,7 +96,7 @@ public class PartyGoer : MonoBehaviour
     public List<PartyGoerAttitudeMeta> attitudesMetadata;
     public List<AttitudeDialogue> attitudesDialogue;
 
-    public static List<PartyGoer> allPartyGoers;
+    public static List<PartyGoer> allPartyGoers = new List<PartyGoer>();
 
     void Awake()
     {

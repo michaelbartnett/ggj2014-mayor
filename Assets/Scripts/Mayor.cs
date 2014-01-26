@@ -28,12 +28,14 @@ public class Mayor : MonoBehaviour
                 var playerPos = player.transform.position.ToXZ();
                 var myPos = this.transform.position.ToXZ();
                 if ((playerPos - myPos).sqrMagnitude < (blockPlayerDistance * blockPlayerDistance)) {
-                    PushPlayerBackRepositionGuards(player);
-                    player.DisableControls();
-                    while (pushingPlayer > 0) yield return null;
-                    DialogueDisplay.Instance.ChangeDialogue("Guards", "You must not speak to the Mayor.");
-                    while (!Input.GetKeyDown(KeyCode.E)) yield return null;
-                    DialogueDisplay.Instance.HideDialogue();
+                    if (!CheckWithGuards()) {
+                        PushPlayerBackRepositionGuards(player);
+                        player.DisableControls();
+                        while (pushingPlayer > 0) yield return null;
+                        DialogueDisplay.Instance.ChangeDialogue("Guards", "You must not speak to the Mayor.");
+                        while (!Input.GetKeyDown(KeyCode.E)) yield return null;
+                        DialogueDisplay.Instance.HideDialogue();
+                    }
                 }
             }
             yield return null;
@@ -75,21 +77,19 @@ public class Mayor : MonoBehaviour
 
     }
 
-    private void OnGuardTriggerEntered(MessageForwarder _, ControllerColliderHit hitInfo)
+    private bool CheckWithGuards()
     {
-        var player = hitInfo.gameObject.GetComponent<Player>();
         bool okToTalkToPLayer = true;
         foreach (var guard in guards) {
             okToTalkToPLayer &= guard.CurrentAttitude == PartyGoerAttitude.Happy;
         }
-
-        if (!okToTalkToPLayer) {
-            Debug.LogError("DONT TALK TO ME");
-        }
+        return okToTalkToPLayer;
     }
 
     void OnPlayerActivate(Player player)
     {
-        MayorMiniGame.Instance.BeginGame();
+        if (CheckWithGuards()) {
+            MayorMiniGame.Instance.BeginGame();
+        }
     }
 }

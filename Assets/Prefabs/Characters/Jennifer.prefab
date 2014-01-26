@@ -88,13 +88,15 @@ MonoBehaviour:
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
-    - Buzz off, twerp.
+    - "Sorry my first time at one of these and not \r\nreally comfortable talking
+      to strangers."
   - name: Ambivalent Dialogue
     dialogueItems:
-    - Yeah, what about Jerry?
+    - "I could sure go for a drink. It might help \r\nme loosen up a bit."
   - name: Happy Dialogue
     dialogueItems:
-    - What a marvelous mask! Here, take this one too.
+    - "Wow after a few drinks I feel liberated! I think \r\nthis is a perfect night
+      for some streaking! Would \r\nyou like to join me?"
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

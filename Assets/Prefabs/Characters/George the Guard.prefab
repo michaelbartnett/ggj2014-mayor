@@ -80,7 +80,16 @@ MonoBehaviour:
         mask: 
         count: 2
     gives: []
-  attitudesDialogue: []
+  attitudesDialogue:
+  - name: Unhappy Dialogue
+    dialogueItems:
+    - WHAT! HAVE A PROBLEM!
+  - name: Ambivalent Dialogue
+    dialogueItems:
+    - BACK OFF OR I'LL CRUSH YOUR SPINE! YEAH!
+  - name: Happy Dialogue
+    dialogueItems:
+    - GO ON THROUGH, THIS TIME!
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

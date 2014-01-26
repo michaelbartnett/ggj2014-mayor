@@ -91,13 +91,14 @@ MonoBehaviour:
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
-    - 
+    - Be gone you peasant!
   - name: Ambivalent Dialogue
     dialogueItems:
-    - I wish Jane would notice me.
+    - "Jill seems to notice everyone but ME! What \r\nshall I do Benjamins?"
   - name: Happy Dialogue
     dialogueItems:
-    - Jane knows my name??? :D
+    - "While you can never have as much money as me \r\nI shall let you partake of
+      my presence."
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

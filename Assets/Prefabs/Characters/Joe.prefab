@@ -88,13 +88,13 @@ MonoBehaviour:
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
-    - Buzz off, twerp.
+    - "Hey Kiddo. Got nothing to offer you but \r\ndrinks at the moment."
   - name: Ambivalent Dialogue
     dialogueItems:
-    - Yeah, what about Jerry?
+    - "So what will you have? Oh something for the \r\nlady in blue. No problem."
   - name: Happy Dialogue
     dialogueItems:
-    - What a marvelous mask! Here, take this one too.
+    - "Here kiddo, have some of Joe's special \r\nstock. On the house."
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

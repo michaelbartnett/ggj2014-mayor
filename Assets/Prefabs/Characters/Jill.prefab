@@ -102,13 +102,15 @@ MonoBehaviour:
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
-    - Buzz off, twerp.
+    - "While you are quite attractive it seems you have \r\nnothing I desire for now."
   - name: Ambivalent Dialogue
     dialogueItems:
-    - Yeah, what about Jerry?
+    - "If you could, please get Jerry off my back and \r\npossibly slip into something
+      a little more revealing."
   - name: Happy Dialogue
     dialogueItems:
-    - What a marvelous mask! Here, take this one too.
+    - "Hey gorgeous, here is my number. Give me a ring \r\nafter this shindig for
+      a night to remember."
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

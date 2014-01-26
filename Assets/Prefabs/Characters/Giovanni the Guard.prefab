@@ -80,7 +80,16 @@ MonoBehaviour:
         mask: 
         count: 2
     gives: []
-  attitudesDialogue: []
+  attitudesDialogue:
+  - name: Unhappy Dialogue
+    dialogueItems:
+    - What are ya lookin at!
+  - name: Ambivalent Dialogue
+    dialogueItems:
+    - "Back off buddy before me and Georgey here have to \r\nbreak ya legs."
+  - name: Happy Dialogue
+    dialogueItems:
+    - "Eh! I heard about ya, the Mayor is excited \r\nto talk to ya."
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

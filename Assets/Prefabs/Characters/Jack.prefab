@@ -85,14 +85,14 @@ MonoBehaviour:
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:
-    - 
+    - "Sorry sweet cheeks you aren't quite what \r\nI am looking for."
   - name: Ambivalent Dialogue
     dialogueItems:
-    - "Jerry's been down in the dumps lately.\r\nI wish he'd realize what a beautiful
-      man he is."
+    - "Well sugar, if you could dress a little more regal \r\nwe may be making progress."
   - name: Happy Dialogue
     dialogueItems:
-    - Any friend of Jerry's is a friend of mine. Here's a mask you might like.
+    - "Hey Hot Stuff! If you have some time after the \r\nparty you know where to
+      find me."
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

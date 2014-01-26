@@ -65,7 +65,7 @@ public class MayorMiniGame : MonoBehaviour
         float dt = Math.Max(0, 1.25f - Time.time - t);
         Audio.Instance.PlayBossMusic();
         yield return new WaitForSeconds(dt);
-        DialogueDisplay.Instance.ChangeDialogue("The Mayor", "What is the meaning of this!?");
+        DialogueDisplay.Instance.ChangeDialogue("The Mayor", "Wait you're not my pusher! Guards!");
         if (MiniGameBegan != null) MiniGameBegan(this);
 
         int hitsToWIn = 3;
@@ -138,7 +138,7 @@ public class MayorMiniGame : MonoBehaviour
 
     IEnumerator EndScreen(bool playerWon)
     {
-        DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWon ? "*dies*" : "No one can stop me!");
+        DialogueDisplay.Instance.ChangeDialogue("The Mayor", playerWon ? "I shoulda crushed you like a cockroach." : "That's what you get when you mess with the Candy!");
         yield return new WaitForSeconds(1.0f);
         DialogueDisplay.Instance.HideDialogue();
         MainScreensScript.Instance.SetGameState(playerWon ? GameState.Win : GameState.Lose);

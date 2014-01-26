@@ -5,28 +5,56 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     public Camera fpCamera;
+    public FPSInputController inputController;
+    public MouseLook mouseLookX;
+    public MouseLook mouseLookY;
     public float minActivateDistance = 2f;
     private GameObject lookingAt;
     private List<string> maskInventory = new List<string>();
     public string WornMask { get; private set; }
     private int wornMaskIndex = 0;
 
+    public static Player Instance { get; private set; }
+
+    public bool ControlsEnabled { get; private set; }
 
     void Awake()
     {
+        DisableControls();
         WornMask = string.Empty;
         maskInventory.Add(WornMask);
+        Instance = this;
     }
 
     void Start()
     {
         MayorMiniGame.Instance.MiniGameInitiated += OnMiniGameInitiated;
+        EnableControls();
     }
 
     private void OnMiniGameInitiated(MayorMiniGame _)
     {
         _.MiniGameInitiated -= OnMiniGameInitiated;
         KnifeScript.Instance.Raise();
+    }
+
+    public void EnableControls()
+    {
+        inputController.enabled = true;
+        mouseLookX.enabled = true;
+        mouseLookY.enabled = true;
+
+
+        ControlsEnabled = true;
+    }
+
+    public void DisableControls()
+    {
+        inputController.enabled = false;
+        mouseLookX.enabled = false;
+        mouseLookY.enabled = false;
+
+        ControlsEnabled = false;
     }
 
     public void GiveMask(string maskName, Sprite maskSprite)

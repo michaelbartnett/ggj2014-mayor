@@ -2,33 +2,40 @@ Dialogue
 
 Jerry:
 Ignore - Be gone you peasant!
-Neutral - Jane seems to notice everything about everyone but ME! What shall I do Benjamins?
+Neutral - Jill seems to notice everyone but ME! What shall I do Benjamins?
 Happy - While you can never have as much money as me I shall let you partake of my presence.
 
 Jennifer:
 Ignore - Sorry my first time at one of these and not really comfortable talking to strangers.
+Neutral - I could sure go for a drink. It might help me loosen up a bit.
+Give - Thanks that drink was excellent, I think I will ask the bar tender for another.
 Happy - Wow after a few drinks I feel liberated! I think this is a perfect night for some streaking! Would you like to join me?
 
 Jack:
 Ignore - Sorry sweet cheeks you aren't quite what I am looking for.
+Nuetral - Well sugar, if you could dress a little more regal we may be making progress.
 Happy - Hey Hot Stuff! If you have some time after the party you know where to find me.
 
 Jill:
 Ignore - While you are quite attractive it seems you have nothing I desire for now.
+Nuetral - If you could, please get Jerry off my back and possibly slip into something a little more revealing.
 Happy - Hey gorgeous, here is my number. Give me a ring after this shindig for a night to remember.
 
 Jane:
 Ignore - Beat it twerp! You are of little value to me.
+Neutral - I am quite curious what Jack has been up to lately. He has been quite secretive.
+Give - For the juicy gossip you have provide I can easily part with this extra mask I have.
 Happy - You may be of some use to me after all.
 
 Joe:
 Ignore - Hey Kiddo. Got nothing to offer you but drinks at the moment.
+Nuetral - So what will you have? Oh something for the lady in blue. No problem.
 Happy - Here kiddo, have some of Joe's special stock. On the house.
 
 George the Guard:
 Ignore - WHAT! HAVE A PROBLEM!
 Push - BACK OFF OR I'LL CRUSH YOUR SPINE! YEAH!
-Happy - 
+Happy - GO ON THROUGH, THIS TIME!
 
 Giovanni the Guard:
 Ignore - What are ya lookin at!

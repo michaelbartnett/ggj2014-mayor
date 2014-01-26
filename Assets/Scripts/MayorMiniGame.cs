@@ -15,29 +15,12 @@ public class MayorMiniGame : MonoBehaviour
 
     public bool Running { get; private set; }
 
+    public event Action<MayorMiniGame> MiniGameBegan;
     public event Action<MayorMiniGame, bool> MiniGameFinished;
 
     public static MayorMiniGame Instance { get; private set; }
 
     private GoTween sliderTween;
-
-    IEnumerator Start()
-    {
-        while (!Running) {
-            if (Input.GetKeyDown(KeyCode.O)) {
-                BeginGame();
-                break;
-            }
-            yield return null;
-        }
-
-        while (true) {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                PlayerAttacks();
-            }
-            yield return null;
-        }
-    }
 
     void Awake()
     {
@@ -57,6 +40,7 @@ public class MayorMiniGame : MonoBehaviour
 
         sliderTween = Go.to(slider, slideDuration, tweenCfg);
         Running = true;
+        if (MiniGameBegan != null) MiniGameBegan(this);
     }
 
     public void PlayerAttacks()

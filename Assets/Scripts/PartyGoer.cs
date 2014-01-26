@@ -16,6 +16,7 @@ public enum NeedType
     TalkToPerson,
     MakePersonHappy,
     WearMask,
+    MinimumNumberOfHappyPeople,
 }
 
 [Serializable]
@@ -23,6 +24,7 @@ public class NeedParams
 {
     public PartyGoer person;
     public string mask;
+    public int count;
 }
 
 [Serializable]
@@ -40,6 +42,9 @@ public class PartyGoerNeed
                 return needParams.person.CurrentAttitude == PartyGoerAttitude.Happy;
             case NeedType.WearMask:
                 return player != null && player.WornMask == needParams.mask;
+            case NeedType.MinimumNumberOfHappyPeople:
+                int numHappy = PartyGoer.allPartyGoers.Count(pg => pg.CurrentAttitude == PartyGoerAttitude.Happy);
+                return numHappy >= needParams.count;
         }
 
         return false;
@@ -87,9 +92,11 @@ public class AttitudeDialogue
 public class PartyGoer : MonoBehaviour
 {
     public PartyGoerAttitude CurrentAttitude { get; private set; }
-    public bool HasTalkedWithPlayer { get; private set; }
+    public bool HasTalkedWithPlayer { get; protected set; }
     public List<PartyGoerAttitudeMeta> attitudesMetadata;
     public List<AttitudeDialogue> attitudesDialogue;
+
+    public static List<PartyGoer> allPartyGoers;
 
     void Awake()
     {
@@ -97,6 +104,12 @@ public class PartyGoer : MonoBehaviour
         while (EvaluateCurrentNeeds(null)) {
             IncrementAttitudeValue();
         }
+        allPartyGoers.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        allPartyGoers.Remove(this);
     }
 
     void OnPlayerActivate(Player player)

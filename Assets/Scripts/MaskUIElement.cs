@@ -3,12 +3,29 @@ using System.Collections;
 
 public class MaskUIElement : MonoBehaviour
 {
+    private const float deactivatedAlpha = 0.5f;
     public SpriteRenderer spriteRenderer;
-    public TextMesh textMesh;
 
-    public void Set(string text, Sprite sprite)
+    public bool Activated { get; private set; }
+
+    void Start()
     {
-        this.textMesh.text = text;
-        this.spriteRenderer.sprite = sprite;
+        Deactivate();
+    }
+
+    public void Activate()
+    {
+        var color = spriteRenderer.color;
+        color.a = 1f;
+        spriteRenderer.color = color;
+        Activated = true;
+    }
+
+    public void Deactivate()
+    {
+        var color = spriteRenderer.color;
+        color.a = deactivatedAlpha;
+        spriteRenderer.color = color;
+        Activated = false;
     }
 }

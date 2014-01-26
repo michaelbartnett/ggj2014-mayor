@@ -1,0 +1,39 @@
+Dialogue
+
+Jerry:
+Ignore - Be gone you peasant!
+Neutral - Jane seems to notice everything about everyone but ME! What shall I do Benjamins?
+Happy - While you can never have as much money as me I shall let you partake of my presence.
+
+Jennifer:
+Ignore - Sorry my first time at one of these and not really comfortable talking to strangers.
+Happy - Wow after a few drinks I feel liberated! I think this is a perfect night for some streaking! Would you like to join me?
+
+Jack:
+Ignore - Sorry sweet cheeks you aren't quite what I am looking for.
+Happy - Hey Hot Stuff! If you have some time after the party you know where to find me.
+
+Jill:
+Ignore - While you are quite attractive it seems you have nothing I desire for now.
+Happy - Hey gorgeous, here is my number. Give me a ring after this shindig for a night to remember.
+
+Jane:
+Ignore - Beat it twerp! You are of little value to me.
+Happy - You may be of some use to me after all.
+
+Joe:
+Ignore - Hey Kiddo. Got nothing to offer you but drinks at the moment.
+Happy - Here kiddo, have some of Joe's special stock. On the house.
+
+George the Guard:
+Ignore - WHAT! HAVE A PROBLEM!
+Push - BACK OFF OR I'LL CRUSH YOUR SPINE! YEAH!
+Happy - 
+
+Giovanni the Guard:
+Ignore - What are ya lookin at!
+Push - Back off buddy before me and Georgey here have to break ya legs.
+Happy - Eh! I heard about ya, the Mayor is excited to talk to ya.
+
+Mayor:
+End - Wait you're not my pusher! Guards!

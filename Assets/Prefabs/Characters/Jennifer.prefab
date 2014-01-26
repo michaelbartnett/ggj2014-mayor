@@ -78,13 +78,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
+    needs:
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask 1
+        count: 0
     gives: []
   - name: Make Happy
-    needs: []
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 0}
+        mask: 
+        count: 0
     gives:
-    - mask: Mask2
-      maskSprite: {fileID: 21300000, guid: a12745a0cc627724c981e8430d235e55, type: 3}
+    - mask: Mask3
+      maskSprite: {fileID: 0}
   attitudesDialogue:
   - name: Unhappy Dialogue
     dialogueItems:

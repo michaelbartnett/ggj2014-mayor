@@ -79,18 +79,18 @@ MonoBehaviour:
   attitudesMetadata:
   - name: Make Ambivalent
     needs:
-    - needType: 0
-      needParams:
-        person: {fileID: 0}
-        mask: 
-        count: 0
-    gives: []
-  - name: Make Happy
-    needs:
     - needType: 2
       needParams:
         person: {fileID: 0}
         mask: Mask1
+        count: 0
+    gives: []
+  - name: Make Happy
+    needs:
+    - needType: 0
+      needParams:
+        person: {fileID: 0}
+        mask: 
         count: 0
     gives:
     - mask: Mask2

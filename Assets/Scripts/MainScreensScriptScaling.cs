@@ -33,11 +33,11 @@ public class MainScreensScriptScaling : MonoBehaviour {
 
 	void OnGUI(){
 		if (gameState == GameState.Title){
-			GUI.Label(new Rect(0,0, Screen.width, Screen.height), titleScreen);
+			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), titleScreen, ScaleMode.StretchToFill);
 		} else if (gameState == GameState.Win){
-			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), winScreen);
+			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), winScreen, ScaleMode.StretchToFill);
 		} else if (gameState == GameState.Lose){
-			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), loseScreen);
+			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), loseScreen, ScaleMode.StretchToFill);
 		}
 	}
 }

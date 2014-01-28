@@ -78,10 +78,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
-    gives:
-    - mask: Mask1
-      maskSprite: {fileID: 21300000, guid: ef0d6776ba6df8a4e883d7836fe12563, type: 3}
+    needs:
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask1
+        count: 0
+    gives: []
   - name: Make Happy
     needs:
     - needType: 0

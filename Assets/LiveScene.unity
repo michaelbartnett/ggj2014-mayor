@@ -476,50 +476,6 @@ MonoBehaviour:
   slider: {fileID: 1256715436}
   sliderSpeed: 14
   increaseSpeedEachRoundBy: 2
---- !u!1001 &164801252
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 920127427}
-    m_Modifications:
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 7.18178368
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 4.65752268
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -4.37113883e-08
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
-      value: 
-      objectReference: {fileID: 785572542}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-  m_RootGameObject: {fileID: 246945666}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1001 &211925530
 Prefab:
   m_ObjectHideFlags: 0
@@ -559,6 +515,11 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 719d78bcde8aa0a40b53e7f2d040e947, type: 2}
+      propertyPath: mask1
+      value: 
+      objectReference: {fileID: 21300000, guid: ef0d6776ba6df8a4e883d7836fe12563,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 719d78bcde8aa0a40b53e7f2d040e947, type: 2}
   m_RootGameObject: {fileID: 1032853489}
@@ -714,7 +675,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 246945667}
@@ -733,7 +694,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 246945666}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
   m_LocalPosition: {x: 7.18178368, y: 0, z: 4.65752268}
@@ -746,7 +707,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400002, guid: a69e15b758e5c754397d05940cefc647,
     type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 246945666}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -761,7 +722,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: a69e15b758e5c754397d05940cefc647,
     type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 246945666}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -770,10 +731,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attitudesMetadata:
   - name: Make Ambivalent
-    needs: []
-    gives:
-    - mask: Mask1
-      maskSprite: {fileID: 21300000, guid: ef0d6776ba6df8a4e883d7836fe12563, type: 3}
+    needs:
+    - needType: 2
+      needParams:
+        person: {fileID: 0}
+        mask: Mask1
+        count: 0
+    gives: []
   - name: Make Happy
     needs:
     - needType: 0
@@ -801,7 +765,7 @@ CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13600000, guid: a69e15b758e5c754397d05940cefc647,
     type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 246945666}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -815,7 +779,7 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3300000, guid: a69e15b758e5c754397d05940cefc647,
     type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 246945666}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &268895938
@@ -1415,6 +1379,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 626302934}
+--- !u!1001 &646179870
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 920127427}
+    m_Modifications:
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.18178368
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 4.65752268
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -4.37113883e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
+      value: 
+      objectReference: {fileID: 785572542}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
+  m_RootGameObject: {fileID: 246945666}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &719751588
 Prefab:
   m_ObjectHideFlags: 0
@@ -1424,7 +1432,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.24296331
+      value: -2.11018276
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1432,7 +1440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.87577295
+      value: 4.03677797
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1440,7 +1448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .448085964
+      value: .873357654
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalRotation.z
@@ -1448,7 +1456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .893990517
+      value: .487079531
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
       propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
@@ -1852,7 +1860,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 927398869}
@@ -1868,7 +1876,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: a69e15b758e5c754397d05940cefc647, type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 927398868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1880,7 +1888,7 @@ SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 21200000, guid: a69e15b758e5c754397d05940cefc647,
     type: 2}
-  m_PrefabInternal: {fileID: 164801252}
+  m_PrefabInternal: {fileID: 646179870}
   m_GameObject: {fileID: 927398868}
   m_Enabled: 1
   m_CastShadows: 0
@@ -2317,6 +2325,7 @@ MonoBehaviour:
   mouseLookY: {fileID: 1506002090}
   motor: {fileID: 1032853492}
   minActivateDistance: 2
+  mask1: {fileID: 21300000, guid: ef0d6776ba6df8a4e883d7836fe12563, type: 3}
 --- !u!1001 &1033494597
 Prefab:
   m_ObjectHideFlags: 0
@@ -2573,7 +2582,7 @@ Prefab:
     - target: {fileID: 11400000, guid: bc3ee8472da14244c85710a9156ab814, type: 2}
       propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
       value: 
-      objectReference: {fileID: 785572542}
+      objectReference: {fileID: 1365690513}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc3ee8472da14244c85710a9156ab814, type: 2}
   m_RootGameObject: {fileID: 1309690453}
@@ -2727,7 +2736,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.802968681
+      value: -.931046486
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
       propertyPath: m_LocalRotation.z
@@ -2735,7 +2744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .596021295
+      value: .364900619
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
       propertyPath: attitudesMetadata.Array.data[0].needs.Array.data[0].needParams.person
@@ -2948,7 +2957,7 @@ MonoBehaviour:
     needs:
     - needType: 0
       needParams:
-        person: {fileID: 785572542}
+        person: {fileID: 1365690513}
         mask: 
         count: 0
     gives: []
@@ -3051,6 +3060,14 @@ Prefab:
       propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
       value: 
       objectReference: {fileID: 1725484575}
+    - target: {fileID: 11400000, guid: 3d308038526aca7448bbed5520bcc761, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 3d308038526aca7448bbed5520bcc761, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d308038526aca7448bbed5520bcc761, type: 2}
   m_RootGameObject: {fileID: 1434649194}
@@ -3207,7 +3224,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 45bfc6f42672b6549b20538b291c08f0, type: 2}
   m_PrefabInternal: {fileID: 1245051898}
   m_GameObject: {fileID: 1364385528}
-  m_LocalRotation: {x: 0, y: -.802968681, z: 0, w: .596021295}
+  m_LocalRotation: {x: 0, y: -.931046486, z: 0, w: .364900619}
   m_LocalPosition: {x: 1.00879455, y: 0, z: 4.61760426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3253,8 +3270,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 554ce6ae9412ead42b52c4767dc50355, type: 2}
   m_PrefabInternal: {fileID: 719751588}
   m_GameObject: {fileID: 1365690510}
-  m_LocalRotation: {x: 0, y: .448085964, z: 0, w: .893990517}
-  m_LocalPosition: {x: -1.24296331, y: 0, z: 2.87577295}
+  m_LocalRotation: {x: 0, y: .873357654, z: 0, w: .487079531}
+  m_LocalPosition: {x: -2.11018276, y: 0, z: 4.03677797}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455508025}
@@ -3501,6 +3518,14 @@ Prefab:
       propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.person
       value: 
       objectReference: {fileID: 1725484575}
+    - target: {fileID: 11400000, guid: e087949963d23b343805726a32b8fa15, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e087949963d23b343805726a32b8fa15, type: 2}
+      propertyPath: attitudesMetadata.Array.data[1].needs.Array.data[0].needParams.count
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e087949963d23b343805726a32b8fa15, type: 2}
   m_RootGameObject: {fileID: 1660399817}
@@ -3632,11 +3657,11 @@ MonoBehaviour:
     gives: []
   - name: Make Happy
     needs:
-    - needType: 1
+    - needType: 3
       needParams:
         person: {fileID: 1725484575}
         mask: 
-        count: 0
+        count: 1
     gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue
@@ -4130,11 +4155,11 @@ MonoBehaviour:
     gives: []
   - name: Make Happy
     needs:
-    - needType: 1
+    - needType: 3
       needParams:
         person: {fileID: 1725484575}
         mask: 
-        count: 0
+        count: 1
     gives: []
   attitudesDialogue:
   - name: Unhappy Dialogue

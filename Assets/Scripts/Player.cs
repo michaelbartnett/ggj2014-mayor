@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private GameObject lookingAt;
     private List<string> maskInventory = new List<string>();
     public string WornMask { get; private set; }
+	public Sprite mask1;
     private int wornMaskIndex = 0;
 
     public static Player Instance { get; private set; }
@@ -42,7 +43,8 @@ public class Player : MonoBehaviour
         while (!Input.GetKeyDown(KeyCode.E)) yield return null;
         MainScreensScript.Instance.SetGameState(GameState.Game);
         gameStarted = true;
-        EnableControls();
+		EnableControls();
+		GiveMask ("Mask1", mask1);
     }
 
     private void OnMiniGameInitiated(MayorMiniGame _)
